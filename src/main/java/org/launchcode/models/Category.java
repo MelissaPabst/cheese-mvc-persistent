@@ -31,6 +31,7 @@ public class Category {
 
     //will represent the list of all items in a given category
     //Use category_id column of cheese table to determine which cheese can belong to a given category
+    //one category for many cheeses
     @OneToMany
     @JoinColumn(name = "category_id")
     private List<Cheese> cheeses = new ArrayList<>();
