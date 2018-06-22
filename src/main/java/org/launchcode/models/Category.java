@@ -5,6 +5,8 @@ import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -25,6 +27,13 @@ public class Category {
     public Category (String name) {
         this.name = name;
     }
+
+
+    //will represent the list of all items in a given category
+    //Use category_id column of cheese table to determine which cheese can belong to a given category
+    @OneToMany
+    @JoinColumn(name = "category_id")
+    private List<Cheese> cheeses = new ArrayList<>();
 
 
     public String getName() {
