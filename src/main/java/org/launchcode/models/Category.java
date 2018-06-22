@@ -48,4 +48,12 @@ public class Category {
     public int getId() {
         return id;
     }
+
+    public List<Cheese> getCheeses() {
+        return cheeses;
+    }
+
+    public void setCheeses(List<Cheese> cheeses) {
+        this.cheeses = cheeses;
+    }
 }
