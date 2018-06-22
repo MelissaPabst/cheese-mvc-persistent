@@ -2,6 +2,11 @@ package org.launchcode.models;
 
 
 import com.sun.istack.internal.NotNull;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Category {
