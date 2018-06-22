@@ -10,7 +10,7 @@
 
 <p th:unless="${categories} and ${categories.size()}">no categories :(</p>
 
-
+<p></p>
 <ul th:each="category : ${categories}">
     <li th:text="${category.name}"></li>
 </ul>
