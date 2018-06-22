@@ -1,7 +1,8 @@
 package org.launchcode.models;
 
 
-import com.sun.istack.internal.NotNull;
+//import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
