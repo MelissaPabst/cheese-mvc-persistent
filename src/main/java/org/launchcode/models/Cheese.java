@@ -1,11 +1,9 @@
 package org.launchcode.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * Created by LaunchCode
@@ -28,6 +26,11 @@ public class Cheese {
     //Many cheeses for one category
     @ManyToOne
     private Category category;
+
+    //configure the other side of our MTM relationship
+    //represents the list of Menu objects that a given cheese is contained in
+    @ManyToMany(mappedBy = "cheeses")
+    private List<Menu> menus;
 
     public Cheese(String name, String description) {
         this.name = name;
