@@ -20,7 +20,7 @@ public class MenuController {
     private MenuDao menuDao;
 
     @RequestMapping(value = "")
-    public String index(Model model, ) {
+    public String index(Model model) {
 
         model.addAttribute("menus", menuDao.findAll());
         model.addAttribute("title", "All Menus");
