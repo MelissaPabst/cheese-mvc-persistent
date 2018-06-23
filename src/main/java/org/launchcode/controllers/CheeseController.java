@@ -68,7 +68,7 @@ public class CheeseController {
         Category cat = categoryDao.findOne(categoryId);
         //create list
         List<Cheese> cheeses = cat.getCheeses();
-        model.addAttribute("title", "All " + cat.getName() + " Cheeses");
+        model.addAttribute("title", "All '" + cat.getName() + "' Cheeses");
         model.addAttribute("cheeses", cheeses);
         return "cheese/index";
 
