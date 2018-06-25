@@ -10,6 +10,8 @@
 
 <p th:unless="${menus} and ${menus.size()}">no menus :(</p>
 
+<br/>
+
 <ul>
     <li th:each="menu : ${menus}">
         <a th:href="@{'menu/view/' + ${menu.getId()}}" th:text="${menu.getName()}"></a>
