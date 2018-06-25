@@ -92,4 +92,36 @@ public class CheeseController {
         return "redirect:";
     }
 
+    //method to display edit cheese form
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable int cheeseId) {
+
+        Cheese cheese = cheeseDao.findOne(cheeseId);
+        model.addAttribute("cheese", cheese);
+        model.addAttribute("categories", categoryDao.findAll());
+        model.addAttribute("title", "Edit Cheese " + cheese.getName() + " (ID = " + cheese.getId() + ")");
+
+        return "cheese/edit";
+
+    }
+
+    //method to process edit cheese form
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.POST)
+    public String processEditForm(@ModelAttribute @Valid Cheese editedCheese, Errors errors, @RequestParam int cheeseId, @RequestParam int catId, Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("Title", "Edit Cheese " + editedCheese.getName() + " (ID = " + cheeseId + ")");
+            model.addAttribute("categories", categoryDao.findAll());
+            return "cheee/add";
+        }
+
+        Cheese cheese = cheeseDao.findOne(cheeseId);
+        Category cat = categoryDao.findOne(catId);
+        cheese.setCategory(cat);
+        cheese.setName(editedCheese.getName());
+        cheese.setDescription(editedCheese.getDescription());
+        cheeseDao.save(cheese);
+
+        return "redirect:";
+    }
 }
