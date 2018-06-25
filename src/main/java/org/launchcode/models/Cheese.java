@@ -24,6 +24,7 @@ public class Cheese {
     private String description;
 
     //Many cheeses for one category
+
     @ManyToOne
     private Category category;
 
