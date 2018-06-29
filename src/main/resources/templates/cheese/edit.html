@@ -30,7 +30,8 @@
         </select>
     </div>
 
-    <input type="hidden" th:field="*{id}" />
+
+    <input type="hidden" th:value="${cheese.id}" name="cheeseId" />
     <input type="submit" value="Edit Cheese" />
 </form>
 

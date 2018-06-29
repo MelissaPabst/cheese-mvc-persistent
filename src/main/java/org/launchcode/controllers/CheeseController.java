@@ -106,17 +106,23 @@ public class CheeseController {
     }
 
     //method to process edit cheese form
-    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.POST)
-    public String processEditForm(@ModelAttribute @Valid Cheese editedCheese, Errors errors, @RequestParam int cheeseId, @RequestParam int catId, Model model) {
-
-        if (errors.hasErrors()) {
-            model.addAttribute("Title", "Edit Cheese " + editedCheese.getName() + " (ID = " + cheeseId + ")");
-            model.addAttribute("categories", categoryDao.findAll());
-            return "cheee/add";
-        }
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String processEditForm(Model model, @ModelAttribute @Valid Cheese editedCheese,
+                                  Errors errors, @RequestParam int cheeseId,
+                                  @RequestParam int categoryId) {
 
         Cheese cheese = cheeseDao.findOne(cheeseId);
-        Category cat = categoryDao.findOne(catId);
+
+        if (errors.hasErrors()) {
+            model.addAttribute("cheese", cheese);
+            model.addAttribute("title", "Edit Cheese " + editedCheese.getName() + " (ID = " + cheeseId + ")");
+            model.addAttribute("categories", categoryDao.findAll());
+
+            return "cheese/edit";
+        }
+
+        //Cheese cheese = cheeseDao.findOne(cheeseId);
+        Category cat = categoryDao.findOne(categoryId);
         cheese.setCategory(cat);
         cheese.setName(editedCheese.getName());
         cheese.setDescription(editedCheese.getDescription());
